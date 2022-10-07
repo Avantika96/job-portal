@@ -1,0 +1,18 @@
+{
+  "jobs": [
+    {
+      "id": "j1",
+      "title": "Senior software engineer",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis at urna at pulvinar. Nunc facilisis ullamcorper luctus. Curabitur non leo dolor.",
+      "requirements": "Duis arcu libero, ultricies eget laoreet id, dignissim id tellus. Nunc quis ipsum non nulla vestibulum eleifend id quis lacus. Sed dolor metus, ornare a neque vel, viverra convallis nisl. Mauris ornare eleifend ligula, nec porta massa porta vel.",
+      "tags": ["React", "HTML", "SCSS", "JS"],
+      "company": "XYZ",
+      "contact": {
+        "name": "abc",
+        "phone": "1234567890"
+      },
+      "applicants": ["f1", "f2", "f6"],
+      "employerId": "e1"
+    }
+  ]
+}

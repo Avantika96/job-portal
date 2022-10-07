@@ -1,0 +1,20 @@
+@mixin flexBox(
+  $justifyContent: false,
+  $alignItems: false,
+  $direction: false,
+  $flexWrap: false
+) {
+  display: flex;
+  @if $justifyContent {
+    justify-content: $justifyContent;
+  }
+  @if $alignItems {
+    align-items: $alignItems;
+  }
+  @if $direction {
+    flex-direction: $direction;
+  }
+  @if $flexWrap {
+    flex-wrap: $flexWrap;
+  }
+}
