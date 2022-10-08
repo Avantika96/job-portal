@@ -1,0 +1,13 @@
+@import "../../styles/application.scss";
+
+.button {
+  margin: 30px;
+  padding: 10px 20px;
+  border: 0;
+  outline: 0;
+  color: $white;
+  background-color: $primaryBlue;
+  border-radius: 12px;
+  min-width: 120px;
+  cursor: pointer;
+}

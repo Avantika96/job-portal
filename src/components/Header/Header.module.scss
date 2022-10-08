@@ -1,0 +1,9 @@
+@import "../../styles/application.scss";
+
+.header {
+  padding: 0 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  width: 100%;
+  @include flexBox(space-between, center);
+}
