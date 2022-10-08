@@ -1,0 +1,10 @@
+@import "../../styles/application.scss";
+
+.tag {
+  background-color: $primaryBlue;
+  color: $white;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin: 8px 4px;
+  display: block;
+}

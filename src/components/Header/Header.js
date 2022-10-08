@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import s from "./Header.module.scss";
 import { freelancerTabs, employerTabs } from "./config";
+import { AppContext } from "../../AppContext";
 import { Button } from "../";
 
 const Header = () => {
-  const user = useSelector((state) => state.currentUser);
   const pageView = useSelector((state) => state.view);
-  const { userType } = user;
   const { pageTitle } = pageView;
-  const tabList = userType === "freelancer" ? freelancerTabs : employerTabs;
+  const { isFreelancer } = useContext(AppContext);
+  const tabList = isFreelancer ? freelancerTabs : employerTabs;
+
   return (
     <header className={s.header}>
       <h1>{pageTitle || "Job Portal"}</h1>
@@ -20,6 +21,7 @@ const Header = () => {
             handleClick={(url) => {
               window.location.href = url;
             }}
+            customStyle={{ margin: "30px" }}
           />
         ))}
       </div>

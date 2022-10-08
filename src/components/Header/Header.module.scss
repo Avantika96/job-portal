@@ -2,8 +2,9 @@
 
 .header {
   padding: 0 30px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px rgba($black, 0.3);
   position: fixed;
   width: 100%;
+  background-color: $white;
   @include flexBox(space-between, center);
 }
