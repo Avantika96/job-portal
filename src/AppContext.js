@@ -6,8 +6,8 @@ export const AppContext = createContext();
 const { Provider } = AppContext;
 
 export const AppProvider = (props) => {
-  const currentUser = useSelector((state) => state.currentUser);
-  const { userType } = currentUser;
+  const { user } = useSelector((state) => state.auth);
+  const { userType } = user || {};
   const isFreelancer = userType === "freelancer" ? true : false;
 
   return <Provider value={{ isFreelancer }}>{props.children}</Provider>;

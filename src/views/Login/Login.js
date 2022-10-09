@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import s from "./Login.module.scss";
 import { Button } from "../../components";
+import { register, login } from "../../slices/auth";
 
 const ValidationSchema = Yup.object().shape({
   username: Yup.string().required("Username is required"),
@@ -13,21 +15,59 @@ const ValidationSchema = Yup.object().shape({
 });
 
 const Login = ({ isSignup }) => {
+  const dispatch = useDispatch();
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const goToHome = () => {
+    window.location.href = "/";
+  };
+  const loginUser = (payload) => {
+    const { username, password } = payload;
+    dispatch(login({ username, password }));
+  };
+  const registerUser = (payload) => {
+    const { name, username, password, isEmployer } = payload;
+    dispatch(
+      register({
+        name,
+        username,
+        password,
+        userType: isEmployer ? "employer" : "freelancer",
+      })
+    );
+  };
+  if (isLoggedIn) {
+    goToHome();
+  }
   return (
     <div className={s.wrap}>
       <Formik
         initialValues={{
+          name: "",
           username: "",
           password: "",
           isEmployer: false,
         }}
         validationSchema={ValidationSchema}
         onSubmit={(values) => {
-          console.log(values);
+          isSignup ? registerUser(values) : loginUser(values);
         }}
       >
-        {({ isValid }) => (
+        {({ isValid, touched }) => (
           <Form className={s.form}>
+            {isSignup && (
+              <>
+                <Field
+                  name="name"
+                  placeholder="Name"
+                  className={s.form__field}
+                />
+                <ErrorMessage
+                  component="div"
+                  name="name"
+                  className={s.form__error}
+                />
+              </>
+            )}
             <Field
               name="username"
               placeholder="Username*"
@@ -57,7 +97,7 @@ const Login = ({ isSignup }) => {
             )}
             <Button
               type="submit"
-              disabled={isValid}
+              disabled={!isValid || !touched.username || !touched.password}
               text={isSignup ? "Sign Up" : "Login"}
             />
           </Form>

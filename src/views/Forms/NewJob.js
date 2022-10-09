@@ -18,7 +18,7 @@ const ValidationSchema = Yup.object().shape({
 });
 
 const NewJob = () => {
-  const currentUser = useSelector((state) => state.currentUser);
+  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const submitForm = (data) => {
     const {
@@ -41,7 +41,7 @@ const NewJob = () => {
         },
         applicants: [],
         date: new Date().toDateString(),
-        employerId: currentUser.id,
+        employerId: user.id,
       })
     );
   };

@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import s from "./Form.module.scss";
-import { Button } from "../../components";
+import { Button, TagInput } from "../../components";
 
 const ValidationSchema = Yup.object().shape({
   githubUsername: Yup.string().required("Github username is required"),
@@ -22,6 +22,7 @@ const UserDetails = () => {
       >
         {({ errors, touched, isValidating }) => (
           <Form className={s.form}>
+            <TagInput />
             <Field
               name="githubUsername"
               placeholder="Github Username*"

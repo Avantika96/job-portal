@@ -1,32 +1,31 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchWrapper } from "../utils/fetchWrapper";
-import { JOBS_API } from "../constants";
+import JobsService from "../services/jobsService";
 
 const initialState = {
   jobs: [],
 };
 
 export const getJobs = createAsyncThunk("jobs/getAll", async () => {
-  const res = await fetchWrapper.get(JOBS_API);
-  return res;
+  const res = await JobsService.getJobs();
+  return res.data;
 });
 
 export const getJobById = createAsyncThunk("jobs/jobById", async (jobId) => {
-  const res = await fetchWrapper.get(JOBS_API + `/${jobId}`);
-  return res;
+  const res = await JobsService.getJobById(jobId);
+  return res.data;
 });
 
 export const applyToJob = createAsyncThunk(
   "jobs/applyToJob",
   async ({ jobId, payload }) => {
-    const res = await fetchWrapper.put(JOBS_API + `/${jobId}`, payload);
-    return res;
+    const res = await JobsService.applyToJob({ jobId, payload });
+    return res.data;
   }
 );
 
 export const addJob = createAsyncThunk("jobs/addJob", async (payload) => {
-  const res = await fetchWrapper.post(JOBS_API, payload);
-  return res;
+  const res = JobsService.addJob(payload);
+  return res.data;
 });
 
 export const jobsSlice = createSlice({
@@ -51,8 +50,5 @@ export const jobsSlice = createSlice({
     },
   },
 });
-
-// Action creators are generated for each case reducer function
-// export const { } = jobsSlice.actions;
 
 export default jobsSlice.reducer;

@@ -103,5 +103,35 @@
       "employerId": "e1",
       "id": "cPZxF5r"
     }
+  ],
+  "users": [
+    {
+      "id": "e1",
+      "name": "Akshay Saxena",
+      "userType": "employer",
+      "username": "AKS196",
+      "password": "12345678"
+    },
+    {
+      "id": "f1",
+      "name": "Akshay Saxena",
+      "userType": "freelancer",
+      "username": "AKS1968",
+      "password": "12345678"
+    },
+    {
+      "name": "Tarang Gupta",
+      "username": "Tarang65",
+      "password": "abcd1234",
+      "userType": "employer",
+      "id": "3qYVljn"
+    },
+    {
+      "name": "Avantika",
+      "username": "Avantika96",
+      "password": "abcd4321",
+      "userType": "freelancer",
+      "id": "uXgvmiJ"
+    }
   ]
 }

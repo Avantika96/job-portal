@@ -6,19 +6,41 @@ import Home from "./views/Home/Home";
 import JobDetail from "./views/JobDetail/JobDetail";
 import Login from "./views/Login/Login";
 import { AppProvider } from "./AppContext";
+import PrivateRoute from "./PrivateRoute";
 
 function App() {
   const currentPage = window.location.pathname;
-  const isLoginPage = currentPage === "/login" || currentPage === "signup";
+  const isLoginPage = currentPage === "/login" || currentPage === "/signup";
   return (
     <AppProvider>
       <BrowserRouter>
         {!isLoginPage && <Header />}
-        <main className={!isLoginPage && s.container}>
+        <main className={!isLoginPage ? s.container : null}>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/jobs" element={<Jobs />} />
-            <Route path="/job-detail/:jobId" element={<JobDetail />} />
+            <Route
+              path="/"
+              element={
+                <PrivateRoute>
+                  <Home />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/jobs"
+              element={
+                <PrivateRoute>
+                  <Jobs />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/job-detail/:jobId"
+              element={
+                <PrivateRoute>
+                  <JobDetail />
+                </PrivateRoute>
+              }
+            />
             <Route
               path="/user-profile/:userId"
               element={<h1>User Profile Page</h1>}

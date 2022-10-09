@@ -6,13 +6,12 @@ import { setTitle } from "../../slices/view";
 import s from "./JobDetail.module.scss";
 import { Button, Tag } from "../../components";
 import { AppContext } from "../../AppContext";
-import { fetchWrapper } from "../../utils/fetchWrapper";
-import { JOBS_API } from "../../constants";
+import JobsService from "../../services/jobsService";
 
 const JobDetail = () => {
   const { isFreelancer } = useContext(AppContext);
   const { jobId } = useParams();
-  const currentUser = useSelector((state) => state.currentUser);
+  const { user } = useSelector((state) => state.auth);
   const [job, setJob] = useState({});
   const {
     id,
@@ -25,12 +24,12 @@ const JobDetail = () => {
     applicants = [],
     date = "",
   } = job;
-  const isApplied = applicants.find((item) => item.id === currentUser.id);
+  const isApplied = applicants.find((item) => item.id === user.id);
   const dispatch = useDispatch();
 
   const getJob = async (id) => {
-    const res = await fetchWrapper.get(JOBS_API + `/${id}`);
-    setJob(res);
+    const res = await JobsService.getJobById(id);
+    setJob(res.data);
   };
 
   useEffect(() => {
@@ -49,10 +48,7 @@ const JobDetail = () => {
         jobId: id,
         payload: {
           ...job,
-          applicants: [
-            ...job.applicants,
-            { id: currentUser.id, name: currentUser.name },
-          ],
+          applicants: [...job.applicants, { id: user.id, name: user.name }],
         },
       })
     );

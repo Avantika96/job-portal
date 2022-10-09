@@ -3,14 +3,15 @@ import s from "./Button.module.scss";
 
 const Button = ({
   text = "",
-  handleClick,
+  handleClick = () => {},
   url = "",
   customStyle = {},
   disabled = false,
+  type = "",
 }) => {
-  console.log(disabled);
   return (
     <button
+      type={type}
       onClick={() => handleClick(url)}
       className={disabled ? `${s.button} ${s.button__disabled}` : s.button}
       style={customStyle}
