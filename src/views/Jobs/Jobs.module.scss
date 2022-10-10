@@ -1,0 +1,35 @@
+@import "../../styles/application.scss";
+
+.wrap {
+  padding: 30px 0;
+  @include flexBox(space-between, flex-start);
+  &__jobs {
+    width: 70%;
+  }
+  &__filters {
+    width: 25%;
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px $boxShadowColor;
+    span {
+      @include fontStyle(18px, false, false, 600);
+    }
+  }
+  &__field {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid $boxShadowColor;
+    border-radius: 4px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrap {
+    flex-direction: column-reverse;
+    &__jobs,
+    &__filters {
+      width: 100%;
+    }
+  }
+}

@@ -1,10 +1,19 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import s from "./TagInput.module.scss";
 import { Tag } from "../";
 
-const TagInput = ({}) => {
-  const [tags, setTags] = useState([]);
+const TagInput = ({
+  name = "",
+  handleChange = () => {},
+  placeholder = "",
+  initialTags = [],
+}) => {
+  const [tags, setTags] = useState(initialTags);
   const tagInput = useRef(null);
+
+  useEffect(() => {
+    handleChange(tags);
+  }, [tags]);
 
   const removeTag = (i) => {
     const newTags = [...tags];
@@ -38,7 +47,8 @@ const TagInput = ({}) => {
             type="text"
             onKeyDown={inputKeyDown}
             ref={tagInput}
-            placeholder="Enter Skills"
+            placeholder={placeholder}
+            name={name}
           />
         </li>
       </ul>

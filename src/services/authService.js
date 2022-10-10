@@ -7,6 +7,16 @@ const register = (payload) => {
     .then(() => (window.location.href = "/login"));
 };
 
+const updateUserDetails = ({ id, payload }) => {
+  return httpService.put(USERS_API + `/${id}`, payload).then((response) => {
+    localStorage.setItem("user", JSON.stringify(response.data));
+  });
+};
+
+const getUser = (id) => {
+  return httpService.get(USERS_API + `/${id}`);
+};
+
 const login = ({ username, password }) => {
   return httpService
     .get(USERS_API + `?username=${username}`)
@@ -29,6 +39,8 @@ const authService = {
   register,
   login,
   logout,
+  updateUserDetails,
+  getUser,
 };
 
 export default authService;

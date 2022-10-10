@@ -23,17 +23,30 @@
   p {
     margin-bottom: 20px;
   }
+  &__applied {
+    @include fontStyle(18px, $green, false, 600);
+  }
 }
 
 .applicants {
   width: 20%;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 2px 4px rgba($black, 0.3);
+  box-shadow: 0 2px 4px $boxShadowColor;
   ul {
     list-style: none;
   }
   li {
     margin: 10px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrap {
+    flex-direction: column;
+  }
+  .details,
+  .applicants {
+    width: 100%;
   }
 }

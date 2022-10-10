@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import s from "./App.module.scss";
 import { Header } from "./components";
 import Jobs from "./views/Jobs/Jobs";
@@ -7,6 +7,7 @@ import JobDetail from "./views/JobDetail/JobDetail";
 import Login from "./views/Login/Login";
 import { AppProvider } from "./AppContext";
 import PrivateRoute from "./PrivateRoute";
+import UserDetails from "./views/Forms/UserDetails";
 
 function App() {
   const currentPage = window.location.pathname;
@@ -43,10 +44,15 @@ function App() {
             />
             <Route
               path="/user-profile/:userId"
-              element={<h1>User Profile Page</h1>}
+              element={
+                <PrivateRoute>
+                  <UserDetails isDetailPage />
+                </PrivateRoute>
+              }
             />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Login isSignup={true} />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </main>
       </BrowserRouter>

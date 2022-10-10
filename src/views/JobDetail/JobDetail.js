@@ -23,6 +23,7 @@ const JobDetail = () => {
     tags = [],
     applicants = [],
     date = "",
+    salary = 0,
   } = job;
   const isApplied = applicants.find((item) => item.id === user.id);
   const dispatch = useDispatch();
@@ -66,8 +67,8 @@ const JobDetail = () => {
           <span>{date}</span>
         </p>
         <div className={s.details__tag}>
-          {tags.map((tag) => (
-            <Tag name={tag} />
+          {tags.map((tag, index) => (
+            <Tag key={index} name={tag} />
           ))}
         </div>
         <span className={s.details__title}>Description</span>
@@ -79,8 +80,13 @@ const JobDetail = () => {
           <span>{name}</span>
           <span>{phone}</span>
         </div>
+        <span className={s.details__title}>Salary per hour</span>
+        <p>&#8377;{salary}</p>
         {isFreelancer && !isApplied && (
           <Button text="Apply" handleClick={() => applyJob()} />
+        )}
+        {isFreelancer && isApplied && (
+          <span className={s.details__applied}>Applied!</span>
         )}
       </div>
       {!isFreelancer && applicants.length > 0 && (

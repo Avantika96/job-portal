@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import s from "./Header.module.scss";
 import { freelancerTabs, employerTabs } from "./config";
@@ -9,27 +10,28 @@ import { logout } from "../../slices/auth";
 const Header = () => {
   const pageView = useSelector((state) => state.view);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { pageTitle } = pageView;
-  const { isFreelancer } = useContext(AppContext);
+  const { isFreelancer, theme, toggleTheme } = useContext(AppContext);
   const tabList = isFreelancer ? freelancerTabs : employerTabs;
 
   return (
     <header className={s.header}>
       <h1>{pageTitle || "Job Portal"}</h1>
       <div>
-        {tabList.map((item) => (
+        {tabList.map((item, index) => (
           <Button
             {...item}
+            key={index}
             handleClick={(url) => {
-              window.location.href = url;
+              navigate(url);
             }}
-            customStyle={{ margin: "20px" }}
           />
         ))}
+        <Button text="Logout" handleClick={() => dispatch(logout())} />
         <Button
-          text="Logout"
-          handleClick={() => dispatch(logout())}
-          customStyle={{ margin: "20px" }}
+          text={theme === "light" ? "Dark Theme" : "Light Theme"}
+          handleClick={() => toggleTheme()}
         />
       </div>
     </header>

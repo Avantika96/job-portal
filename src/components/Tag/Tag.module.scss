@@ -11,7 +11,7 @@
     display: block;
   }
   &__cross {
-    background: rgba($black, 0.4);
+    background: $boxShadowColor;
     border: none;
     position: absolute;
     right: 8px;

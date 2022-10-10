@@ -1,4 +1,6 @@
-$white: #fff;
-$black: #000;
-$red: #ff0000;
-$primaryBlue: #0034be;
+$white: var(--white);
+$black: var(--black);
+$red: var(--red);
+$primaryBlue: var(--primary);
+$green: var(--green);
+$boxShadowColor: var(--boxShadowColor);

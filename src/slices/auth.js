@@ -9,6 +9,11 @@ export const register = createAsyncThunk("auth/register", async (payload) => {
   return response.data;
 });
 
+export const updateUser = createAsyncThunk("auth/updateUser", async (data) => {
+  const response = await AuthService.updateUserDetails(data);
+  return response.data;
+});
+
 export const login = createAsyncThunk("auth/login", async (payload) => {
   const data = await AuthService.login(payload);
   return { user: data };
@@ -36,6 +41,9 @@ const authSlice = createSlice({
     [logout.fulfilled]: (state, action) => {
       state.isLoggedIn = false;
       state.user = null;
+    },
+    [updateUser.fulfilled]: (state, action) => {
+      state.user = { ...state.user, ...action.payload };
     },
   },
 });

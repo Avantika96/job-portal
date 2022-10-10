@@ -2,9 +2,27 @@
 
 .header {
   padding: 0 30px;
-  box-shadow: 0 4px 8px rgba($black, 0.3);
+  box-shadow: 0 4px 8px $boxShadowColor;
   position: fixed;
   width: 100%;
   background-color: $white;
+  z-index: 1;
+  button {
+    margin: 20px;
+  }
   @include flexBox(space-between, center);
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 0 15px;
+    h1 {
+      @include fontStyle(24px, false, 40px);
+    }
+    button {
+      margin: 20px 4px;
+      min-width: auto;
+    }
+  }
 }

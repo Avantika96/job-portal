@@ -9,7 +9,7 @@
   width: 300px;
   border-radius: 20px;
   padding: 30px 20px 10px;
-  box-shadow: 0 4px 8px rgba($black, 0.4);
+  box-shadow: 0 4px 8px $boxShadowColor;
   margin-bottom: 15px;
   @include flexBox(false, center, column);
 
@@ -17,7 +17,7 @@
     width: 100%;
     margin: 15px 0 2px;
     padding: 8px;
-    border: 1px solid rgba($black, 0.4);
+    border: 1px solid $boxShadowColor;
     border-radius: 4px;
   }
   &__error {

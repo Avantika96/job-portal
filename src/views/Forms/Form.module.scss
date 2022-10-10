@@ -9,11 +9,36 @@
     width: 100%;
     margin: 15px 0 2px;
     padding: 8px;
-    border: 1px solid rgba($black, 0.4);
+    border: 1px solid $boxShadowColor;
     border-radius: 4px;
   }
   &__error {
     align-self: flex-start;
     @include fontStyle(12px, $red);
+  }
+}
+
+.repos {
+  margin: 20px 0 50px;
+  @include flexBox(false, false, column);
+  span {
+    margin-bottom: 10px;
+    @include fontStyle(18px, false, false, 700);
+  }
+}
+
+.details {
+  @include fontStyle(16px);
+  span {
+    font-weight: 600;
+  }
+  &__tab {
+    @include flexBox();
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .form {
+    width: 100%;
   }
 }

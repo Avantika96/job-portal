@@ -12,6 +12,6 @@
   cursor: pointer;
   &__disabled {
     cursor: not-allowed;
-    background-color: rgba($primaryBlue, 0.4);
+    background-color: $boxShadowColor;
   }
 }

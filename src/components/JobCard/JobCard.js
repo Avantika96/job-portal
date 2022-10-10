@@ -27,11 +27,11 @@ const JobCard = ({
           {applicants.length}
         </p>
       ) : (
-        <p className={s.card__desc}>
-          {tags.map((tag) => (
-            <Tag name={tag} />
+        <div className={s.card__desc}>
+          {tags.map((tag, index) => (
+            <Tag name={tag} key={index} />
           ))}
-        </p>
+        </div>
       )}
       <p className={s.card__date}>
         <span>Posted On: </span>

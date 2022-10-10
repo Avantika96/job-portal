@@ -1,8 +1,8 @@
 @import "../../styles/application.scss";
 
 .input {
-  background: white;
-  border: 1px solid rgba($black, 0.4);
+  background: $white;
+  border: 1px solid $boxShadowColor;
   border-radius: 4px;
   display: flex;
   flex-wrap: wrap;

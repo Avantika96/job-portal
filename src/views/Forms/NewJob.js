@@ -3,8 +3,9 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import s from "./Form.module.scss";
-import { Button } from "../../components";
+import { Button, TagInput } from "../../components";
 import { addJob } from "../../slices/jobs";
+import { disableSubmitOnEnter } from "../../utils";
 
 const ValidationSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
@@ -15,6 +16,7 @@ const ValidationSchema = Yup.object().shape({
   company: Yup.string().required("Company Name is required"),
   name: Yup.string().required("Recruiter name is required"),
   phone: Yup.string().required("Recruiter Phone number is required"),
+  salary: Yup.number().required("Salary is required"),
 });
 
 const NewJob = () => {
@@ -28,6 +30,8 @@ const NewJob = () => {
       company = "",
       name = "",
       phone = "",
+      salary = 0,
+      tags = [],
     } = data;
     dispatch(
       addJob({
@@ -42,6 +46,8 @@ const NewJob = () => {
         applicants: [],
         date: new Date().toDateString(),
         employerId: user.id,
+        salary,
+        tags,
       })
     );
   };
@@ -55,14 +61,16 @@ const NewJob = () => {
           company: "",
           name: "",
           phone: "",
+          salary: "",
+          tags: [],
         }}
         validationSchema={ValidationSchema}
-        onSubmit={(values) => {
+        onSubmit={(values, { resetForm }) => {
           submitForm(values);
         }}
       >
-        {({ touched, isValid }) => (
-          <Form className={s.form}>
+        {({ touched, isValid, setFieldValue }) => (
+          <Form className={s.form} onKeyDown={disableSubmitOnEnter}>
             <Field
               name="title"
               placeholder="Title*"
@@ -95,6 +103,11 @@ const NewJob = () => {
               name="requirements"
               className={s.form__error}
             />
+            <TagInput
+              name="tags"
+              placeholder="Enter Tags"
+              handleChange={(tags) => setFieldValue("tags", tags)}
+            />
             <Field
               name="company"
               placeholder="Company*"
@@ -124,6 +137,17 @@ const NewJob = () => {
             <ErrorMessage
               component="div"
               name="phone"
+              className={s.form__error}
+            />
+            <Field
+              name="salary"
+              placeholder="Salary per hour*"
+              type="number"
+              className={s.form__field}
+            />
+            <ErrorMessage
+              component="div"
+              name="salary"
               className={s.form__error}
             />
             <Button
