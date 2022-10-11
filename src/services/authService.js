@@ -1,5 +1,6 @@
 import httpService from "./httpService";
 import { USERS_API } from "../constants";
+import { toast } from "react-toastify";
 
 const register = (payload) => {
   return httpService
@@ -13,10 +14,6 @@ const updateUserDetails = ({ id, payload }) => {
   });
 };
 
-const getUser = (id) => {
-  return httpService.get(USERS_API + `/${id}`);
-};
-
 const login = ({ username, password }) => {
   return httpService
     .get(USERS_API + `?username=${username}`)
@@ -24,9 +21,18 @@ const login = ({ username, password }) => {
       if (response.data[0].password === password) {
         localStorage.setItem("user", JSON.stringify(response.data[0]));
         window.location.href = "/";
+      } else {
+        toast.error("Password is incorrect", {
+          className: "warn-toast",
+        });
       }
 
       return response.data;
+    })
+    .catch(() => {
+      toast.error("Username or password is incorrect", {
+        className: "warn-toast",
+      });
     });
 };
 
@@ -40,7 +46,6 @@ const authService = {
   login,
   logout,
   updateUserDetails,
-  getUser,
 };
 
 export default authService;

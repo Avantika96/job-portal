@@ -1,0 +1,20 @@
+@import "../../styles/application.scss";
+
+.details {
+  @include fontStyle(16px);
+  span {
+    font-weight: 600;
+  }
+  &__tab {
+    @include flexBox();
+  }
+}
+
+.repos {
+  margin: 20px 0 50px;
+  @include flexBox(false, false, column);
+  span {
+    margin-bottom: 10px;
+    @include fontStyle(18px, false, false, 700);
+  }
+}

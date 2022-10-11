@@ -27,16 +27,6 @@
   }
 }
 
-.details {
-  @include fontStyle(16px);
-  span {
-    font-weight: 600;
-  }
-  &__tab {
-    @include flexBox();
-  }
-}
-
 @media screen and (max-width: 768px) {
   .form {
     width: 100%;

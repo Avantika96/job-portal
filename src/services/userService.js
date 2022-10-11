@@ -1,6 +1,10 @@
 import httpService from "./httpService";
-import { GITHUB_API } from "../constants";
+import { GITHUB_API, USERS_API } from "../constants";
 import { toast } from "react-toastify";
+
+const getUser = (id) => {
+  return httpService.get(USERS_API + `/${id}`);
+};
 
 const getGithubRepos = (username) => {
   return httpService.get(GITHUB_API + `/${username}/repos`).catch(() => {
@@ -12,6 +16,7 @@ const getGithubRepos = (username) => {
 
 const userService = {
   getGithubRepos,
+  getUser,
 };
 
 export default userService;

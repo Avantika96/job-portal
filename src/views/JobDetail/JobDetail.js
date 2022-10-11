@@ -19,7 +19,8 @@ const JobDetail = () => {
     description = "",
     requirements = "",
     company = "",
-    contact: { name, phone } = {},
+    employerPhone = "",
+    employerName = "",
     tags = [],
     applicants = [],
     date = "",
@@ -77,8 +78,8 @@ const JobDetail = () => {
         <p>{requirements}</p>
         <div className={s.details__contact}>
           <span className={s.details__title}>Contact of the Recruiter</span>
-          <span>{name}</span>
-          <span>{phone}</span>
+          <span>{employerName}</span>
+          <span>{employerPhone}</span>
         </div>
         <span className={s.details__title}>Salary per hour</span>
         <p>&#8377;{salary}</p>

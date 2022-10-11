@@ -1,9 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import JobsService from "../services/jobsService";
 
-const initialState = {
-  jobs: [],
-};
+const initialState = [];
 
 export const getJobs = createAsyncThunk("jobs/getAll", async () => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -23,11 +21,6 @@ export const getJobsByPage = createAsyncThunk(
     return res.data;
   }
 );
-
-export const getJobById = createAsyncThunk("jobs/jobById", async (jobId) => {
-  const res = await JobsService.getJobById(jobId);
-  return res.data;
-});
 
 export const applyToJob = createAsyncThunk(
   "jobs/applyToJob",
@@ -49,24 +42,24 @@ export const jobsSlice = createSlice({
     [getJobs.fulfilled]: (state, action) => {
       return [...action.payload];
     },
-    [getJobById.fulfilled]: (state, action) => {
-      return [action.payload];
-    },
     [applyToJob.fulfilled]: (state, action) => {
-      if (state.jobs.length > 0) {
-        const index = state.jobs.findIndex(
-          (job) => job.id === action.payload.id
-        );
-        state.jobs[index] = {
-          ...state.jobs[index],
+      if (state.length > 0) {
+        const index = state.findIndex((job) => job.id === action.payload.id);
+        state[index] = {
+          ...state[index],
           ...action.payload,
         };
       }
       window.location.reload();
     },
     [addJob.fulfilled]: (state, action) => {
-      state.jobs.push(action.payload);
+      state.push(action.payload);
       window.location.reload();
+    },
+    [getJobsByPage.fulfilled]: (state, action) => {
+      // state.push(...action.payload);
+      // return state;
+      state = [...state, ...action.payload];
     },
   },
 });

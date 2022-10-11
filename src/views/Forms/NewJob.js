@@ -39,10 +39,8 @@ const NewJob = () => {
         description,
         requirements,
         company,
-        contact: {
-          name,
-          phone,
-        },
+        employerPhone: phone,
+        employerName: name,
         applicants: [],
         date: new Date().toDateString(),
         employerId: user.id,

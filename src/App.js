@@ -7,7 +7,7 @@ import JobDetail from "./views/JobDetail/JobDetail";
 import Login from "./views/Login/Login";
 import { AppProvider } from "./AppContext";
 import PrivateRoute from "./PrivateRoute";
-import UserDetails from "./views/Forms/UserDetails";
+import UserProfile from "./views/UserProfile/UserProfile";
 
 function App() {
   const currentPage = window.location.pathname;
@@ -46,7 +46,7 @@ function App() {
               path="/user-profile/:userId"
               element={
                 <PrivateRoute>
-                  <UserDetails isDetailPage />
+                  <UserProfile />
                 </PrivateRoute>
               }
             />
