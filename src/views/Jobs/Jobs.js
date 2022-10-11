@@ -15,7 +15,7 @@ const Jobs = () => {
   const lastItemRef = useRef();
   const observer = useRef();
   const [page, setPage] = useState(1);
-  const jobs = useSelector((state) => state.jobs);
+  const { jobs, fetchingJobs } = useSelector((state) => state.jobs);
   const [jobList, setJobList] = useState(jobs);
   const [filteredJobs, setFilteredJobs] = useState([]);
   const { isFreelancer } = useContext(AppContext);
@@ -77,7 +77,7 @@ const Jobs = () => {
     setFilteredJobs(filteredData);
   };
 
-  return (
+  return !fetchingJobs ? (
     <div className={s.wrap}>
       <div className={s.wrap__jobs}>
         {jobList.length > 0 ? (
@@ -135,6 +135,8 @@ const Jobs = () => {
         </div>
       )}
     </div>
+  ) : (
+    <span>Loading...</span>
   );
 };
 
