@@ -40,7 +40,7 @@ export const jobsSlice = createSlice({
   initialState,
   extraReducers: {
     [getJobs.fulfilled]: (state, action) => {
-      return [...action.payload];
+      return [...action.payload].reverse();
     },
     [applyToJob.fulfilled]: (state, action) => {
       if (state.length > 0) {

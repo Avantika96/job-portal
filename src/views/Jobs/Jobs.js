@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useContext, useState } from "react";
+import React, { useEffect, useContext, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import { getJobs } from "../../slices/jobs";
@@ -9,19 +9,50 @@ import s from "./Jobs.module.scss";
 import { Button, TagInput } from "../../components";
 import { disableSubmitOnEnter } from "../../utils";
 
+const PAGE_LIMIT = 10;
+
 const Jobs = () => {
-  const [jobList, setJobList] = useState([]);
+  const lastItemRef = useRef();
+  const observer = useRef();
+  const [page, setPage] = useState(1);
   const jobs = useSelector((state) => state.jobs);
+  const [jobList, setJobList] = useState(jobs);
+  const [filteredJobs, setFilteredJobs] = useState([]);
   const { isFreelancer } = useContext(AppContext);
   const dispatch = useDispatch();
-  const init = useCallback(() => {
-    dispatch(setTitle("Jobs"));
-    dispatch(getJobs()).then((jobs) => setJobList(jobs.payload));
-  }, [dispatch]);
 
   useEffect(() => {
-    init();
-  }, [init]);
+    if (filteredJobs.length > 0) {
+      setJobList(filteredJobs.slice(0, page * PAGE_LIMIT));
+    } else if (jobs.length > 0) {
+      setJobList(jobs.slice(0, page * PAGE_LIMIT));
+    }
+  }, [jobs, page, filteredJobs]);
+
+  useEffect(() => {
+    dispatch(setTitle("Jobs"));
+    dispatch(getJobs());
+  }, []);
+
+  useEffect(() => {
+    const options = {
+      root: document,
+      rootMargin: "20px",
+      threshold: 1,
+    };
+    const callback = (entries) => {
+      if (entries[0].isIntersecting) {
+        setPage(page + 1);
+      }
+    };
+    observer.current = new IntersectionObserver(callback, options);
+    if (lastItemRef.current) {
+      observer.current.observe(lastItemRef.current);
+    }
+    return () => {
+      observer.current.disconnect();
+    };
+  });
 
   const checkSkills = (jobTags = [], skills) => {
     for (let i = 0; i < skills.length; i++) {
@@ -40,17 +71,28 @@ const Jobs = () => {
       const { tags = [], salary = 0 } = job;
       return (
         (skills.length > 0 && checkSkills(tags, skills)) ||
-        (minSalary && salary >= minSalary)
+        (minSalary && parseInt(salary) >= parseInt(minSalary))
       );
     });
-    setJobList(filteredData);
+    setFilteredJobs(filteredData);
   };
 
   return (
     <div className={s.wrap}>
       <div className={s.wrap__jobs}>
         {jobList.length > 0 ? (
-          jobList.map((job, index) => <JobCard {...job} key={index} />)
+          jobList.map((job, index) => {
+            if (index === jobList.length - 1) {
+              return (
+                <>
+                  <JobCard {...job} key={index} />
+                  <span ref={lastItemRef}></span>
+                </>
+              );
+            } else {
+              return <JobCard {...job} key={index} />;
+            }
+          })
         ) : (
           <span>No Jobs Found!</span>
         )}
@@ -81,6 +123,12 @@ const Jobs = () => {
                   className={s.wrap__field}
                 />
                 <Button type="submit" text="Submit" />
+                <Button
+                  type="button"
+                  text="Clear Filter"
+                  handleClick={() => setFilteredJobs([])}
+                  customStyle={{ marginLeft: "10px" }}
+                />
               </Form>
             )}
           </Formik>

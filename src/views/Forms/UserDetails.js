@@ -19,16 +19,14 @@ const UserDetails = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (githubUsername) {
-      UserService.getGithubRepos(githubUsername).then((response) =>
-        setRepos(response.data)
-      );
+      UserService.getGithubRepos(githubUsername)
+        .then((response) => setRepos(response.data))
+        .catch(() => setRepos([]));
     }
   }, [user]);
 
   const submitUserDetails = (data) => {
-    dispatch(updateUser({ id: user.id, payload: { ...user, ...data } })).then(
-      () => window.location.reload()
-    );
+    dispatch(updateUser({ id: user.id, payload: { ...user, ...data } }));
   };
   return (
     <div>

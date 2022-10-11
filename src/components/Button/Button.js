@@ -12,7 +12,7 @@ const Button = ({
   return (
     <button
       type={type}
-      onClick={() => handleClick(url)}
+      onClick={() => handleClick(url ? url : null)}
       className={disabled ? `${s.button} ${s.button__disabled}` : s.button}
       style={customStyle}
     >

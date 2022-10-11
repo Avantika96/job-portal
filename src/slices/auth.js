@@ -5,13 +5,12 @@ import AuthService from "../services/authService";
 const user = JSON.parse(localStorage.getItem("user"));
 
 export const register = createAsyncThunk("auth/register", async (payload) => {
-  const response = await AuthService.register(payload);
-  return response.data;
+  return await AuthService.register(payload);
 });
 
 export const updateUser = createAsyncThunk("auth/updateUser", async (data) => {
   const response = await AuthService.updateUserDetails(data);
-  return response.data;
+  return response;
 });
 
 export const login = createAsyncThunk("auth/login", async (payload) => {

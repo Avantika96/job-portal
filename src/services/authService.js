@@ -10,7 +10,9 @@ const register = (payload) => {
 
 const updateUserDetails = ({ id, payload }) => {
   return httpService.put(USERS_API + `/${id}`, payload).then((response) => {
+    localStorage.removeItem("user");
     localStorage.setItem("user", JSON.stringify(response.data));
+    return response.data;
   });
 };
 
