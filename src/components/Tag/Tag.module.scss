@@ -1,0 +1,31 @@
+@import "../../styles/application.scss";
+
+.tag {
+  position: relative;
+  &__text {
+    background-color: $primaryBlue;
+    color: $white;
+    padding: 4px 8px;
+    border-radius: 20px;
+    margin: 8px 4px;
+    display: block;
+  }
+  &__cross {
+    background: $boxShadowColor;
+    border: none;
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    color: $white;
+    font-size: 14px;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    transform: translateY(-50%) rotate(45deg);
+    cursor: pointer;
+    @include flexBox(center, center);
+    + .tag__text {
+      padding-right: 25px;
+    }
+  }
+}

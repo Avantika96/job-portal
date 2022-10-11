@@ -5,14 +5,290 @@
       "title": "Senior software engineer",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis at urna at pulvinar. Nunc facilisis ullamcorper luctus. Curabitur non leo dolor.",
       "requirements": "Duis arcu libero, ultricies eget laoreet id, dignissim id tellus. Nunc quis ipsum non nulla vestibulum eleifend id quis lacus. Sed dolor metus, ornare a neque vel, viverra convallis nisl. Mauris ornare eleifend ligula, nec porta massa porta vel.",
-      "tags": ["React", "HTML", "SCSS", "JS"],
-      "company": "XYZ",
+      "tags": [
+        "React",
+        "HTML",
+        "SCSS",
+        "JS"
+      ],
+      "company": "ABC Pvt. Limited",
       "contact": {
-        "name": "abc",
+        "name": "Akshay Saxena",
         "phone": "1234567890"
       },
-      "applicants": ["f1", "f2", "f6"],
+      "date": "March 21, 2012",
+      "applicants": [
+        {
+          "id": "f1",
+          "name": "Shatak"
+        },
+        {
+          "id": "f3",
+          "name": "Vikram"
+        },
+        {
+          "id": "f6",
+          "name": "Vedha"
+        },
+        {
+          "id": "f9",
+          "name": "Abdul"
+        },
+        {
+          "id": "uXgvmiJ",
+          "name": "Avantika"
+        }
+      ],
       "employerId": "e1"
+    },
+    {
+      "id": "j2",
+      "title": "Senior software engineer 2",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis at urna at pulvinar. Nunc facilisis ullamcorper luctus. Curabitur non leo dolor.",
+      "requirements": "Duis arcu libero, ultricies eget laoreet id, dignissim id tellus. Nunc quis ipsum non nulla vestibulum eleifend id quis lacus. Sed dolor metus, ornare a neque vel, viverra convallis nisl. Mauris ornare eleifend ligula, nec porta massa porta vel.",
+      "tags": [
+        "React",
+        "HTML",
+        "SCSS",
+        "JS"
+      ],
+      "company": "ABC Pvt. Limited",
+      "contact": {
+        "name": "Akshay Saxena",
+        "phone": "1234567890"
+      },
+      "date": "March 21, 2012",
+      "applicants": [
+        {
+          "id": "f1",
+          "name": "Shatak"
+        },
+        {
+          "id": "f3",
+          "name": "Vikram"
+        },
+        {
+          "id": "f6",
+          "name": "Vedha"
+        },
+        {
+          "id": "uXgvmiJ",
+          "name": "Avantika"
+        }
+      ],
+      "employerId": "e1"
+    },
+    {
+      "title": "Senior Frontend Developer",
+      "description": "Ut mollis porttitor sollicitudin. Vivamus fermentum ut odio sagittis interdum. Donec eget rutrum lacus. Morbi pellentesque pulvinar dictum.",
+      "requirements": "Ut mollis porttitor sollicitudin. Vivamus fermentum ut odio sagittis interdum. Donec eget rutrum lacus. Morbi pellentesque pulvinar dictum.",
+      "company": "XYZ Data Ltd",
+      "applicants": [
+        {
+          "id": "uXgvmiJ",
+          "name": "Avantika"
+        }
+      ],
+      "contact": {
+        "name": "Tarang Gupta",
+        "phone": "0987654321"
+      },
+      "date": "Sat Oct 08 2022",
+      "employerId": "e1",
+      "id": "2wboYjC"
+    },
+    {
+      "title": "React Developer",
+      "description": "abc",
+      "requirements": "abc",
+      "company": "XYZ Data Ltd",
+      "applicants": [
+        {
+          "id": "f9",
+          "name": "Abdul"
+        }
+      ],
+      "contact": {
+        "name": "Tarang Gupta",
+        "phone": "0987654321"
+      },
+      "date": "Sat Oct 08 2022",
+      "employerId": "e1",
+      "id": "cPZxF5r"
+    },
+    {
+      "title": "Data Analyst",
+      "description": "abdcfr",
+      "requirements": "qwertyu",
+      "company": "asdfgh",
+      "contact": {
+        "name": "abcdr",
+        "phone": "0987654321"
+      },
+      "applicants": [
+        {
+          "id": "uXgvmiJ",
+          "name": "Avantika"
+        }
+      ],
+      "date": "Mon Oct 10 2022",
+      "employerId": "3qYVljn",
+      "salary": 1200000,
+      "tags": [
+        "data",
+        "sql",
+        "analysis",
+        "tableu",
+        "ml",
+        "ai"
+      ],
+      "id": "_oL6rIY"
+    },
+    {
+      "title": "avcdd",
+      "description": "ggggg",
+      "requirements": "ggggg",
+      "company": "achg",
+      "contact": {
+        "name": "adtshk",
+        "phone": "0987654321"
+      },
+      "applicants": [
+        {
+          "id": "uXgvmiJ",
+          "name": "Avantika"
+        }
+      ],
+      "date": "Mon Oct 10 2022",
+      "employerId": "3qYVljn",
+      "salary": 11111111,
+      "tags": [
+        "data",
+        "html",
+        "css",
+        "ttt"
+      ],
+      "id": "Cyajkbq"
+    },
+    {
+      "title": "Product Manager",
+      "description": "abcsdg",
+      "requirements": "qwerty",
+      "company": "XYZ Data Ltd",
+      "contact": {
+        "name": "Rahul Sharma",
+        "phone": "0987654321"
+      },
+      "applicants": [
+        {
+          "id": "XVzAiZ8",
+          "name": "Pooja"
+        }
+      ],
+      "date": "Mon Oct 10 2022",
+      "employerId": "iz268M2",
+      "salary": 1200,
+      "tags": [
+        "product",
+        "software",
+        "manager"
+      ],
+      "id": "FMfSI8V"
+    },
+    {
+      "title": "abcdf",
+      "description": "acffff",
+      "requirements": "ggggg",
+      "company": "cdgg",
+      "contact": {
+        "name": "hhhh",
+        "phone": "0987654321"
+      },
+      "applicants": [],
+      "date": "Tue Oct 11 2022",
+      "employerId": "3qYVljn",
+      "salary": 12009,
+      "tags": [
+        "html",
+        "css"
+      ],
+      "id": "QpBQoch"
+    },
+    {
+      "title": "ffff",
+      "description": "hhhh",
+      "requirements": "hhhh",
+      "company": "ddd",
+      "contact": {
+        "name": "ddd",
+        "phone": "0987654321"
+      },
+      "applicants": [],
+      "date": "Tue Oct 11 2022",
+      "employerId": "3qYVljn",
+      "salary": 12,
+      "tags": [
+        "html",
+        "css"
+      ],
+      "id": "o0SVQoX"
+    }
+  ],
+  "users": [
+    {
+      "id": "e1",
+      "name": "Akshay Saxena",
+      "userType": "employer",
+      "username": "AKS196",
+      "password": "12345678"
+    },
+    {
+      "id": "f1",
+      "name": "Akshay Saxena",
+      "userType": "freelancer",
+      "username": "AKS1968",
+      "password": "12345678"
+    },
+    {
+      "name": "Tarang Gupta",
+      "username": "Tarang65",
+      "password": "abcd1234",
+      "userType": "employer",
+      "id": "3qYVljn"
+    },
+    {
+      "name": "Avantika",
+      "username": "Avantika96",
+      "password": "abcd4321",
+      "userType": "freelancer",
+      "id": "uXgvmiJ",
+      "githubUsername": "Avantika96",
+      "skills": [
+        "html",
+        "css"
+      ]
+    },
+    {
+      "name": "Rahul Sharma",
+      "username": "Rahul",
+      "password": "abcd12345",
+      "userType": "employer",
+      "id": "iz268M2"
+    },
+    {
+      "name": "Pooja",
+      "username": "Pooja",
+      "password": "abcd1234",
+      "userType": "freelancer",
+      "id": "XVzAiZ8",
+      "githubUsername": "webber2409",
+      "skills": [
+        "html",
+        "cs",
+        "css",
+        "Js",
+        "react"
+      ]
     }
   ]
 }

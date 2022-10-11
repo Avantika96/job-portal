@@ -18,3 +18,23 @@
     flex-wrap: $flexWrap;
   }
 }
+
+@mixin fontStyle(
+  $fontSize: false,
+  $color: false,
+  $lineHeight: false,
+  $fontWeight: false
+) {
+  @if $fontSize {
+    font-size: $fontSize;
+  }
+  @if $color {
+    color: $color;
+  }
+  @if $lineHeight {
+    line-height: $lineHeight;
+  }
+  @if $fontWeight {
+    font-weight: $fontWeight;
+  }
+}

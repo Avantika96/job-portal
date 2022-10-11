@@ -1,10 +1,22 @@
 import React from "react";
 import s from "./Button.module.scss";
 
-const Button = ({ title = "", handleClick, url = "" }) => {
+const Button = ({
+  text = "",
+  handleClick = () => {},
+  url = "",
+  customStyle = {},
+  disabled = false,
+  type = "",
+}) => {
   return (
-    <button onClick={() => handleClick(url)} className={s.button}>
-      {title}
+    <button
+      type={type}
+      onClick={() => handleClick(url)}
+      className={disabled ? `${s.button} ${s.button__disabled}` : s.button}
+      style={customStyle}
+    >
+      {text}
     </button>
   );
 };

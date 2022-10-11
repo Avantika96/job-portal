@@ -1,0 +1,27 @@
+@import "../../styles/application.scss";
+
+.card {
+  margin: 20px 0;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px $boxShadowColor;
+  white-space: break-spaces;
+  line-height: 1.6;
+  cursor: pointer;
+  &__title {
+    @include fontStyle(18px, $primaryBlue, 24px, 600);
+  }
+  &__desc {
+    @include flexBox(false, false, false, wrap);
+    span {
+      font-weight: 600;
+    }
+  }
+  &__date {
+    font-style: italic;
+    @include fontStyle(12px);
+    span {
+      font-weight: 600;
+    }
+  }
+}

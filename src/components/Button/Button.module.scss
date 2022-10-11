@@ -1,7 +1,7 @@
 @import "../../styles/application.scss";
 
 .button {
-  margin: 30px;
+  margin: 30px 0;
   padding: 10px 20px;
   border: 0;
   outline: 0;
@@ -10,4 +10,8 @@
   border-radius: 12px;
   min-width: 120px;
   cursor: pointer;
+  &__disabled {
+    cursor: not-allowed;
+    background-color: $boxShadowColor;
+  }
 }

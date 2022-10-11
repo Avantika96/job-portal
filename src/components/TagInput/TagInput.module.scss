@@ -1,0 +1,37 @@
+@import "../../styles/application.scss";
+
+.input {
+  background: $white;
+  border: 1px solid $boxShadowColor;
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  margin: 15px 0 10px;
+  width: 100%;
+  input {
+    border: none;
+    width: 100%;
+    height: 45px;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__tags {
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    li {
+      list-style: none;
+    }
+
+    li.input__tags__input {
+      background: none;
+      flex-grow: 1;
+      padding: 0;
+    }
+  }
+}

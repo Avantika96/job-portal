@@ -1,0 +1,52 @@
+@import "../../styles/application.scss";
+
+.wrap {
+  padding: 30px 0;
+  @include flexBox(space-between);
+}
+.details {
+  width: 70%;
+  @include fontStyle(16px);
+  &__title {
+    font-weight: 700;
+  }
+  &__tag {
+    @include flexBox();
+  }
+  &__contact {
+    span {
+      display: block;
+    }
+  }
+  &__tag,
+  &__contact,
+  p {
+    margin-bottom: 20px;
+  }
+  &__applied {
+    @include fontStyle(18px, $green, false, 600);
+  }
+}
+
+.applicants {
+  width: 20%;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 4px $boxShadowColor;
+  ul {
+    list-style: none;
+  }
+  li {
+    margin: 10px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrap {
+    flex-direction: column;
+  }
+  .details,
+  .applicants {
+    width: 100%;
+  }
+}

@@ -1,21 +1,21 @@
 export const freelancerTabs = [
   {
-    title: "Profile",
+    text: "Profile",
     url: "/",
   },
   {
-    title: "Jobs",
+    text: "Jobs",
     url: "/jobs",
   },
 ];
 
 export const employerTabs = [
   {
-    title: "New Job",
+    text: "New Job",
     url: "/",
   },
   {
-    title: "Jobs",
+    text: "Jobs",
     url: "/jobs",
   },
 ];
